@@ -1,0 +1,64 @@
+#cpp
+
+
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode*cur1=l1;
+        ListNode*cur2=l2;
+        ListNode*cur3=new ListNode();
+        ListNode*cur4=cur3;
+        while(cur1!=NULL&&cur2!=NULL)
+        {
+            if(cur1->next!=NULL||cur2->next!=NULL)
+            cur3->next=new ListNode();
+           cur3->val+=cur1->val+cur2->val;
+           if(cur3->val>9)
+           {
+               int s=cur3->val-10;
+               cur3->val=s;
+               if(cur3->next==NULL)
+               cur3->next=new ListNode();
+               cur3->next->val=1;
+           } 
+           cur1=cur1->next;
+           cur2=cur2->next;
+           cur3=cur3->next;
+        }
+        while(cur1!=NULL)
+        {
+            if(cur1->next!=NULL)
+            cur3->next=new ListNode();
+            cur3->val+=cur1->val;
+            if(cur3->val>9)
+           {
+               int s=cur3->val-10;
+               cur3->val=s;
+               if(cur3->next==NULL)
+               cur3->next=new ListNode();
+               cur3->next->val=1;
+           }
+            cur1=cur1->next;
+            cur3=cur3->next;
+        }
+        while(cur2!=NULL)
+        {
+            if(cur2->next!=NULL)
+            cur3->next=new ListNode();
+            cur3->val+=cur2->val;
+            if(cur3->val>9)
+           {
+               int s=cur3->val-10;
+               cur3->val=s;
+               if(cur3->next==NULL)
+               cur3->next=new ListNode();
+               cur3->next->val=1;
+           }
+           cur2=cur2->next;
+           cur3=cur3->next;
+        }
+
+        return cur4;
+    }
+    
+};
