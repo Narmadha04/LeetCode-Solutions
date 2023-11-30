@@ -1,0 +1,15 @@
+#include<string>
+class Solution {
+public:
+    int hammingWeight(uint32_t n) {
+    string s=bitset<32>(n).to_string();
+    int c=0,i=0;
+    while(i<s.length()){
+        if(s.at(i)=='1'){
+            c++;
+        }
+        i++;
+    }
+    return c;
+    }
+};
